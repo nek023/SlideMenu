@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+    </dependencies>
+    <scenes>
+        <!--Slide Menu-->
+        <scene sceneID="dX9-1G-HdO">
+            <objects>
+                <viewController storyboardIdentifier="MainViewController" id="4M4-2J-QwN" customClass="MainViewController" customModule="SlideMenuDemo" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="oid-bz-lWT"/>
+                        <viewControllerLayoutGuide type="bottom" id="fAd-jR-adc"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="1wg-Iz-bCp">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="mrU-rX-DVj">
+                                <rect key="frame" x="200" y="286" width="200" height="29"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="vwI-Oh-3cr"/>
+                                </constraints>
+                                <segments>
+                                    <segment title="Overlay"/>
+                                    <segment title="Shift"/>
+                                </segments>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <action selector="valueDidChange:" destination="4M4-2J-QwN" eventType="valueChanged" id="B6C-lw-61f"/>
+                                </connections>
+                            </segmentedControl>
+                        </subviews>
+                        <color key="backgroundColor" red="0.5450980392" green="0.76470588240000004" blue="0.2901960784" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="mrU-rX-DVj" firstAttribute="centerY" secondItem="1wg-Iz-bCp" secondAttribute="centerY" id="6Qw-H6-FfT"/>
+                            <constraint firstItem="mrU-rX-DVj" firstAttribute="centerX" secondItem="1wg-Iz-bCp" secondAttribute="centerX" id="hfh-CX-efD"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Slide Menu" id="XF6-ZQ-nl8">
+                        <barButtonItem key="leftBarButtonItem" title="Left" id="ho5-qY-ukC">
+                            <connections>
+                                <action selector="showLeftMenu:" destination="4M4-2J-QwN" id="OrM-ov-TH6"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Right" id="94o-aj-qtc">
+                            <connections>
+                                <action selector="showRightMenu:" destination="4M4-2J-QwN" id="1tI-sd-4YH"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="BrI-Rm-1mC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-577" y="474"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="caY-H0-Qho">
+            <objects>
+                <navigationController storyboardIdentifier="MainNavigationController" id="wS8-fT-g1G" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="DdP-q9-5Z5">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="4M4-2J-QwN" kind="relationship" relationship="rootViewController" id="NM1-BR-owu"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="PcA-g7-OZX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1323" y="474"/>
+        </scene>
+        <!--Left View Controller-->
+        <scene sceneID="NFE-hP-WUQ">
+            <objects>
+                <viewController storyboardIdentifier="LeftViewController" id="pfU-RC-49L" customClass="LeftViewController" customModule="SlideMenuDemo" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ZP7-QM-Wip"/>
+                        <viewControllerLayoutGuide type="bottom" id="v3L-E9-jnP"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="CIW-0W-0sq">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eMc-aB-Hhx">
+                                <rect key="frame" x="284" y="285" width="32" height="30"/>
+                                <state key="normal" title="Hide">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="hide:" destination="pfU-RC-49L" eventType="touchUpInside" id="Tqi-4U-b6D"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.12941176469999999" green="0.58823529409999997" blue="0.95294117649999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="eMc-aB-Hhx" firstAttribute="centerX" secondItem="CIW-0W-0sq" secondAttribute="centerX" id="J1P-cA-FYs"/>
+                            <constraint firstItem="eMc-aB-Hhx" firstAttribute="centerY" secondItem="CIW-0W-0sq" secondAttribute="centerY" id="txp-bR-w6R"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eaa-b5-kBL" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="143" y="474"/>
+        </scene>
+        <!--Right View Controller-->
+        <scene sceneID="ipv-sn-hhf">
+            <objects>
+                <viewController storyboardIdentifier="RightViewController" id="O4a-Xe-lIN" customClass="RightViewController" customModule="SlideMenuDemo" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="emc-HB-Ztx"/>
+                        <viewControllerLayoutGuide type="bottom" id="ete-OC-0qi"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="4Kj-XH-r25">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6zs-Wg-EoG">
+                                <rect key="frame" x="284" y="285" width="32" height="30"/>
+                                <state key="normal" title="Hide">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="hide:" destination="O4a-Xe-lIN" eventType="touchUpInside" id="TZv-vb-n3r"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="0.59607843140000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="6zs-Wg-EoG" firstAttribute="centerX" secondItem="4Kj-XH-r25" secondAttribute="centerX" id="FW9-Tk-p7c"/>
+                            <constraint firstItem="6zs-Wg-EoG" firstAttribute="centerY" secondItem="4Kj-XH-r25" secondAttribute="centerY" id="QbJ-s6-vQO"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Y8w-ua-G3y" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="867" y="474"/>
+        </scene>
+    </scenes>
+</document>
