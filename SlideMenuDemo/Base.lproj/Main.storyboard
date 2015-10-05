@@ -15,27 +15,7 @@
                     <view key="view" contentMode="scaleToFill" id="1wg-Iz-bCp">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="mrU-rX-DVj">
-                                <rect key="frame" x="200" y="286" width="200" height="29"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="200" id="vwI-Oh-3cr"/>
-                                </constraints>
-                                <segments>
-                                    <segment title="Overlay"/>
-                                    <segment title="Shift"/>
-                                </segments>
-                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <connections>
-                                    <action selector="valueDidChange:" destination="4M4-2J-QwN" eventType="valueChanged" id="B6C-lw-61f"/>
-                                </connections>
-                            </segmentedControl>
-                        </subviews>
                         <color key="backgroundColor" red="0.5450980392" green="0.76470588240000004" blue="0.2901960784" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstItem="mrU-rX-DVj" firstAttribute="centerY" secondItem="1wg-Iz-bCp" secondAttribute="centerY" id="6Qw-H6-FfT"/>
-                            <constraint firstItem="mrU-rX-DVj" firstAttribute="centerX" secondItem="1wg-Iz-bCp" secondAttribute="centerX" id="hfh-CX-efD"/>
-                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Slide Menu" id="XF6-ZQ-nl8">
                         <barButtonItem key="leftBarButtonItem" title="Left" id="ho5-qY-ukC">

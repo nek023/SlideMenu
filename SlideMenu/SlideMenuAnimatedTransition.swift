@@ -34,14 +34,6 @@ public class SlideMenuAnimatedTransition: NSObject, UIViewControllerAnimatedTran
     
     public var animationDuration: NSTimeInterval = 0.35
     public var revealAmount: CGFloat = 300
-    public var transitionStyle: SlideMenuTransitionStyle = .Overlay
-    
-    public var prelayout: ((transition: SlideMenuAnimatedTransition, transitionContext: UIViewControllerContextTransitioning) -> Void)?
-    public var animation: ((transition: SlideMenuAnimatedTransition, transitionContext: UIViewControllerContextTransitioning) -> Void)?
-    public var completion: ((transition: SlideMenuAnimatedTransition, transitionContext: UIViewControllerContextTransitioning) -> Void)?
-    
-    public private(set) weak var presentedView: UIView?
-    public private(set) weak var snapshotView: UIView?
     
     
     // MARK: - Initializers
@@ -86,19 +78,10 @@ public class SlideMenuAnimatedTransition: NSObject, UIViewControllerAnimatedTran
     }
     
     private func animatePresentation(transitionContext: UIViewControllerContextTransitioning) {
-        // When `modalPresentationStyle` is `UIModalPresentationFullScreen`, `fromView` is provided.
-        // But when `modalPresentationStyle` is `UIModalPresentationOverFullScreen`,
-        // `fromView` is not provided, though `fromViewController` is provided.
-        // That's why the transition views are got via view controllers instead of using `viewForKey:`.
         guard let containerView = transitionContext.containerView(),
-            let fromViewController = transitionContext.viewControllerForKey(UITransitionContextFromViewControllerKey),
-            let toViewController = transitionContext.viewControllerForKey(UITransitionContextToViewControllerKey) else {
+            let toView = transitionContext.viewForKey(UITransitionContextToViewKey) else {
                 return
         }
-        
-        let fromView = fromViewController.view
-        let toView = toViewController.view
-        presentedView = toView
         
         // Prelayout
         let backgroundView = self.backgroundView
@@ -128,28 +111,6 @@ public class SlideMenuAnimatedTransition: NSObject, UIViewControllerAnimatedTran
         
         let panGestureRecognizer = UIPanGestureRecognizer(target: self, action: "handlePanGesture:")
         toView.addGestureRecognizer(panGestureRecognizer)
-        
-        if transitionStyle == .Shift {
-            let snapshotView = fromView.snapshotViewAfterScreenUpdates(true)
-            self.snapshotView = snapshotView
-            
-            snapshotView.frame = CGRectMake(
-                0,
-                0,
-                CGRectGetWidth(containerView.frame),
-                CGRectGetHeight(containerView.frame)
-            )
-            snapshotView.autoresizingMask = [.FlexibleWidth, .FlexibleHeight]
-            containerView.insertSubview(snapshotView, aboveSubview: toView)
-            
-            let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: "handleTapGesture:")
-            snapshotView.addGestureRecognizer(tapGestureRecognizer)
-            
-            let panGestureRecognizer = UIPanGestureRecognizer(target: self, action: "handlePanGesture:")
-            snapshotView.addGestureRecognizer(panGestureRecognizer)
-        }
-        
-        prelayout?(transition: self, transitionContext: transitionContext)
         
         // Animation
         let options: UIViewAnimationOptions
@@ -181,30 +142,8 @@ public class SlideMenuAnimatedTransition: NSObject, UIViewControllerAnimatedTran
                         CGRectGetHeight(containerView.frame)
                     )
                 }
-                
-                if self.transitionStyle == .Shift, let snapshotView = self.snapshotView {
-                    if self.transitionDirection == .Left {
-                        snapshotView.frame = CGRectMake(
-                            self.revealAmount,
-                            0,
-                            CGRectGetWidth(containerView.frame),
-                            CGRectGetHeight(containerView.frame)
-                        )
-                    } else {
-                        snapshotView.frame = CGRectMake(
-                            -self.revealAmount,
-                            0,
-                            CGRectGetWidth(containerView.frame),
-                            CGRectGetHeight(containerView.frame)
-                        )
-                    }
-                }
-                
-                self.animation?(transition: self, transitionContext: transitionContext)
             },
             completion: { (finished: Bool) in
-                self.completion?(transition: self, transitionContext: transitionContext)
-                
                 let cancelled = transitionContext.transitionWasCancelled()
                 transitionContext.completeTransition(!cancelled)
             }
@@ -213,12 +152,9 @@ public class SlideMenuAnimatedTransition: NSObject, UIViewControllerAnimatedTran
     
     private func animateDismissal(transitionContext: UIViewControllerContextTransitioning) {
         guard let containerView = transitionContext.containerView(),
-            let presentedView = self.presentedView else {
-            return
+            let fromView = transitionContext.viewForKey(UITransitionContextFromViewKey) else {
+                return
         }
-        
-        // Prelayout
-        prelayout?(transition: self, transitionContext: transitionContext)
         
         // Animation
         let options: UIViewAnimationOptions
@@ -236,35 +172,22 @@ public class SlideMenuAnimatedTransition: NSObject, UIViewControllerAnimatedTran
                 self.backgroundView.alpha = 0
                 
                 if self.transitionDirection == .Left {
-                    presentedView.frame = CGRectMake(
+                    fromView.frame = CGRectMake(
                         -self.revealAmount,
                         0,
                         self.revealAmount,
                         CGRectGetHeight(containerView.frame)
                     )
                 } else {
-                    presentedView.frame = CGRectMake(
+                    fromView.frame = CGRectMake(
                         CGRectGetWidth(containerView.frame),
                         0,
                         self.revealAmount,
                         CGRectGetHeight(containerView.frame)
                     )
                 }
-                
-                if self.transitionStyle == .Shift, let snapshotView = self.snapshotView {
-                    snapshotView.frame = CGRectMake(
-                        0,
-                        0,
-                        CGRectGetWidth(containerView.frame),
-                        CGRectGetHeight(containerView.frame)
-                    )
-                }
-                
-                self.animation?(transition: self, transitionContext: transitionContext)
             },
             completion: { (finished: Bool) in
-                self.completion?(transition: self, transitionContext: transitionContext)
-                
                 let cancelled = transitionContext.transitionWasCancelled()
                 transitionContext.completeTransition(!cancelled)
             }

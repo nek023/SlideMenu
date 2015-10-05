@@ -21,11 +21,6 @@ View controller container which provides the sliding menus.
     window?.rootViewController = slideMenuController
 
 
-## Notes
-
-- Device rotation is not supported for `SlideMenuTransitionStyle.Shift` style.
-
-
 ## License
 
 SlideMenu is released under the MIT license.  
