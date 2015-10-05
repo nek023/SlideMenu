@@ -15,7 +15,6 @@
 		AA3729381BC114830098D18F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AA3729371BC114830098D18F /* Assets.xcassets */; };
 		AA37293B1BC114830098D18F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA3729391BC114830098D18F /* LaunchScreen.storyboard */; };
 		AA3A66721BC115A4009C6392 /* SlideMenuAnimatedTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA3A666E1BC115A4009C6392 /* SlideMenuAnimatedTransition.swift */; settings = {ASSET_TAGS = (); }; };
-		AA3A66731BC115A4009C6392 /* SlideMenuBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA3A666F1BC115A4009C6392 /* SlideMenuBackgroundView.swift */; settings = {ASSET_TAGS = (); }; };
 		AA3A66741BC115A4009C6392 /* SlideMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA3A66701BC115A4009C6392 /* SlideMenuController.swift */; settings = {ASSET_TAGS = (); }; };
 		AA3A66751BC115A4009C6392 /* UIViewController+SlideMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA3A66711BC115A4009C6392 /* UIViewController+SlideMenu.swift */; settings = {ASSET_TAGS = (); }; };
 		AA3A667D1BC115FD009C6392 /* LeftViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA3A667A1BC115FD009C6392 /* LeftViewController.swift */; settings = {ASSET_TAGS = (); }; };
@@ -70,7 +69,6 @@
 		AA37293A1BC114830098D18F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AA37293C1BC114830098D18F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AA3A666E1BC115A4009C6392 /* SlideMenuAnimatedTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlideMenuAnimatedTransition.swift; sourceTree = "<group>"; };
-		AA3A666F1BC115A4009C6392 /* SlideMenuBackgroundView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlideMenuBackgroundView.swift; sourceTree = "<group>"; };
 		AA3A66701BC115A4009C6392 /* SlideMenuController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlideMenuController.swift; sourceTree = "<group>"; };
 		AA3A66711BC115A4009C6392 /* UIViewController+SlideMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+SlideMenu.swift"; sourceTree = "<group>"; };
 		AA3A667A1BC115FD009C6392 /* LeftViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeftViewController.swift; sourceTree = "<group>"; };
@@ -111,7 +109,6 @@
 				AA3729151BC114750098D18F /* SlideMenu.h */,
 				AA3A66761BC115AB009C6392 /* Extensions */,
 				AA3A66791BC115C3009C6392 /* Common */,
-				AA3A66781BC115BA009C6392 /* Views */,
 				AA3A66771BC115B4009C6392 /* ViewControllers */,
 				AA3A666B1BC1156F009C6392 /* Supporting Files */,
 			);
@@ -178,14 +175,6 @@
 				AA3A66701BC115A4009C6392 /* SlideMenuController.swift */,
 			);
 			name = ViewControllers;
-			sourceTree = "<group>";
-		};
-		AA3A66781BC115BA009C6392 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				AA3A666F1BC115A4009C6392 /* SlideMenuBackgroundView.swift */,
-			);
-			name = Views;
 			sourceTree = "<group>";
 		};
 		AA3A66791BC115C3009C6392 /* Common */ = {
@@ -371,7 +360,6 @@
 				AA3A66721BC115A4009C6392 /* SlideMenuAnimatedTransition.swift in Sources */,
 				AA3A66741BC115A4009C6392 /* SlideMenuController.swift in Sources */,
 				AA3A66751BC115A4009C6392 /* UIViewController+SlideMenu.swift in Sources */,
-				AA3A66731BC115A4009C6392 /* SlideMenuBackgroundView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -25,7 +25,7 @@ public class SlideMenuAnimatedTransition: NSObject, UIViewControllerAnimatedTran
     }
     
     public let menuContainerView = UIView()
-    public let menuBackgroundView = SlideMenuBackgroundView()
+    public let menuBackgroundView = UIView()
     
     weak var delegate: SlideMenuAnimatedTransitionDelegate?
     
@@ -42,12 +42,13 @@ public class SlideMenuAnimatedTransition: NSObject, UIViewControllerAnimatedTran
     override init() {
         super.init()
         
-        menuBackgroundView.onTapGesture = { (tapGestureRecognizer: UITapGestureRecognizer) in
-            self.handleTapGesture(tapGestureRecognizer)
-        }
-        menuBackgroundView.onPanGesture = { (panGestureRecognizer: UIPanGestureRecognizer) in
-            self.handlePanGesture(panGestureRecognizer)
-        }
+        // Configure menu container view
+        menuContainerView.addGestureRecognizer(UIPanGestureRecognizer(target: self, action: "handlePanGesture:"))
+        
+        // Configure menu background view
+        menuBackgroundView.backgroundColor = UIColor.blackColor().colorWithAlphaComponent(0.6)
+        menuBackgroundView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: "handleTapGesture:"))
+        menuBackgroundView.addGestureRecognizer(UIPanGestureRecognizer(target: self, action: "handlePanGesture:"))
     }
     
     
@@ -114,10 +115,6 @@ public class SlideMenuAnimatedTransition: NSObject, UIViewControllerAnimatedTran
         toView.frame = menuContainerView.bounds
         toView.autoresizingMask = [.FlexibleWidth, .FlexibleHeight]
         menuContainerView.addSubview(toView)
-        
-        // Add pan gesture recognizer to menu container view
-        let panGestureRecognizer = UIPanGestureRecognizer(target: self, action: "handlePanGesture:")
-        menuContainerView.addGestureRecognizer(panGestureRecognizer)
         
         // Animation
         let options: UIViewAnimationOptions
