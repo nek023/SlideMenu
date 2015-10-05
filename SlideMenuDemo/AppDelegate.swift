@@ -31,6 +31,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             rightViewController: rightViewController
         )
         
+        let menuContainerView = slideMenuController.animatedTransition.menuContainerView
+        menuContainerView.layer.shadowColor = UIColor.blackColor().CGColor
+        menuContainerView.layer.shadowOpacity = 0.4
+        menuContainerView.layer.shadowRadius = 4.0
+        
         let window = UIWindow(frame: UIScreen.mainScreen().bounds)
         window.rootViewController = slideMenuController
         window.makeKeyAndVisible()
