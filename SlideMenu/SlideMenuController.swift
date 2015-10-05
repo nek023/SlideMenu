@@ -17,8 +17,8 @@ public class SlideMenuController: UIViewController, UIViewControllerTransitionin
     
     public private(set) var interactivelyTransitioning: Bool = false
     
-    public private(set) var leftScreenEdgePanGestureRecognizer: UIScreenEdgePanGestureRecognizer?
-    public private(set) var rightScreenEdgePanGestureRecognizer: UIScreenEdgePanGestureRecognizer?
+    public private(set) var leftScreenEdgePanGestureRecognizer: UIScreenEdgePanGestureRecognizer!
+    public private(set) var rightScreenEdgePanGestureRecognizer: UIScreenEdgePanGestureRecognizer!
     
     public var leftViewControllerPresented: Bool {
         guard let leftViewController = self.leftViewController else {
@@ -86,16 +86,6 @@ public class SlideMenuController: UIViewController, UIViewControllerTransitionin
         }
     }
     
-    public var transitionStyle: SlideMenuTransitionStyle {
-        set {
-            animatedTransition.transitionStyle = newValue
-        }
-        
-        get {
-            return animatedTransition.transitionStyle
-        }
-    }
-    
     
     // MARK: - Initializers
     
@@ -140,14 +130,12 @@ public class SlideMenuController: UIViewController, UIViewControllerTransitionin
     }
     
     private func setUpScreenEdgePanGestureRecognizers() {
-        let leftScreenEdgePanGestureRecognizer = UIScreenEdgePanGestureRecognizer(target: self, action: "handleScreenEdgePanGesture:")
+        leftScreenEdgePanGestureRecognizer = UIScreenEdgePanGestureRecognizer(target: self, action: "handleScreenEdgePanGesture:")
         leftScreenEdgePanGestureRecognizer.edges = [.Left]
-        self.leftScreenEdgePanGestureRecognizer = leftScreenEdgePanGestureRecognizer
         view.addGestureRecognizer(leftScreenEdgePanGestureRecognizer)
         
-        let rightScreenEdgePanGestureRecognizer = UIScreenEdgePanGestureRecognizer(target: self, action: "handleScreenEdgePanGesture:")
+        rightScreenEdgePanGestureRecognizer = UIScreenEdgePanGestureRecognizer(target: self, action: "handleScreenEdgePanGesture:")
         rightScreenEdgePanGestureRecognizer.edges = [.Right]
-        self.rightScreenEdgePanGestureRecognizer = rightScreenEdgePanGestureRecognizer
         view.addGestureRecognizer(rightScreenEdgePanGestureRecognizer)
     }
     

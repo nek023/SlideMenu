@@ -23,7 +23,6 @@
 		AA3A667F1BC115FD009C6392 /* RightViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA3A667C1BC115FD009C6392 /* RightViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		AA3A66811BC11623009C6392 /* SlideMenu.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA3729131BC114750098D18F /* SlideMenu.framework */; };
 		AA3A66821BC11623009C6392 /* SlideMenu.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = AA3729131BC114750098D18F /* SlideMenu.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		AA569C9E1BC13A3300D6F765 /* SlideMenuTransitionStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA569C9D1BC13A3300D6F765 /* SlideMenuTransitionStyle.swift */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,7 +76,6 @@
 		AA3A667A1BC115FD009C6392 /* LeftViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeftViewController.swift; sourceTree = "<group>"; };
 		AA3A667B1BC115FD009C6392 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		AA3A667C1BC115FD009C6392 /* RightViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RightViewController.swift; sourceTree = "<group>"; };
-		AA569C9D1BC13A3300D6F765 /* SlideMenuTransitionStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlideMenuTransitionStyle.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -194,7 +192,6 @@
 			isa = PBXGroup;
 			children = (
 				AA3A666E1BC115A4009C6392 /* SlideMenuAnimatedTransition.swift */,
-				AA569C9D1BC13A3300D6F765 /* SlideMenuTransitionStyle.swift */,
 			);
 			name = Common;
 			sourceTree = "<group>";
@@ -372,7 +369,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				AA3A66721BC115A4009C6392 /* SlideMenuAnimatedTransition.swift in Sources */,
-				AA569C9E1BC13A3300D6F765 /* SlideMenuTransitionStyle.swift in Sources */,
 				AA3A66741BC115A4009C6392 /* SlideMenuController.swift in Sources */,
 				AA3A66751BC115A4009C6392 /* UIViewController+SlideMenu.swift in Sources */,
 				AA3A66731BC115A4009C6392 /* SlideMenuBackgroundView.swift in Sources */,
