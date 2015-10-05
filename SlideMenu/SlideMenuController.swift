@@ -86,16 +86,6 @@ public class SlideMenuController: UIViewController, UIViewControllerTransitionin
         }
     }
     
-    public var transitionStyle: SlideMenuTransitionStyle {
-        set {
-            animatedTransition.transitionStyle = newValue
-        }
-        
-        get {
-            return animatedTransition.transitionStyle
-        }
-    }
-    
     
     // MARK: - Initializers
     
