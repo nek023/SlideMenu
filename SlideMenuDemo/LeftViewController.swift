@@ -15,9 +15,9 @@ class LeftViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.layer.shadowColor = UIColor.blackColor().CGColor
-        view.layer.shadowOpacity = 0.4
-        view.layer.shadowRadius = 4.0
+//        view.layer.shadowColor = UIColor.blackColor().CGColor
+//        view.layer.shadowOpacity = 0.4
+//        view.layer.shadowRadius = 4.0
     }
     
     
