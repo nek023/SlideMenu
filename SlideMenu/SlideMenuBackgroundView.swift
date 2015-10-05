@@ -12,8 +12,8 @@ public class SlideMenuBackgroundView: UIView {
     
     // MARK: - Properties
     
-    private var tapGestureRecognizer: UITapGestureRecognizer?
-    private var panGestureRecognizer: UIPanGestureRecognizer?
+    private var tapGestureRecognizer: UITapGestureRecognizer!
+    private var panGestureRecognizer: UIPanGestureRecognizer!
     
     var onTapGesture: ((tapGestureRecognizer: UITapGestureRecognizer) -> Void)?
     var onPanGesture: ((panGestureRecognizer: UIPanGestureRecognizer) -> Void)?
@@ -37,12 +37,10 @@ public class SlideMenuBackgroundView: UIView {
         backgroundColor = UIColor.blackColor().colorWithAlphaComponent(0.6)
         
         // Register gesture recognizers
-        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: "handleTapGesture:")
-        self.tapGestureRecognizer = tapGestureRecognizer
+        tapGestureRecognizer = UITapGestureRecognizer(target: self, action: "handleTapGesture:")
         addGestureRecognizer(tapGestureRecognizer)
         
-        let panGestureRecognizer = UIPanGestureRecognizer(target: self, action: "handlePanGesture:")
-        self.panGestureRecognizer = panGestureRecognizer
+        panGestureRecognizer = UIPanGestureRecognizer(target: self, action: "handlePanGesture:")
         addGestureRecognizer(panGestureRecognizer)
     }
     
