@@ -24,7 +24,8 @@ public class SlideMenuAnimatedTransition: NSObject, UIViewControllerAnimatedTran
         case Right
     }
     
-    public let backgroundView: SlideMenuBackgroundView
+    public let menuContainerView = UIView()
+    public let menuBackgroundView = UIView()
     
     weak var delegate: SlideMenuAnimatedTransitionDelegate?
     
@@ -39,16 +40,15 @@ public class SlideMenuAnimatedTransition: NSObject, UIViewControllerAnimatedTran
     // MARK: - Initializers
     
     override init() {
-        backgroundView = SlideMenuBackgroundView()
-        
         super.init()
         
-        backgroundView.onTapGesture = { (tapGestureRecognizer: UITapGestureRecognizer) in
-            self.handleTapGesture(tapGestureRecognizer)
-        }
-        backgroundView.onPanGesture = { (panGestureRecognizer: UIPanGestureRecognizer) in
-            self.handlePanGesture(panGestureRecognizer)
-        }
+        // Configure menu container view
+        menuContainerView.addGestureRecognizer(UIPanGestureRecognizer(target: self, action: "handlePanGesture:"))
+        
+        // Configure menu background view
+        menuBackgroundView.backgroundColor = UIColor.blackColor().colorWithAlphaComponent(0.6)
+        menuBackgroundView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: "handleTapGesture:"))
+        menuBackgroundView.addGestureRecognizer(UIPanGestureRecognizer(target: self, action: "handlePanGesture:"))
     }
     
     
@@ -83,34 +83,38 @@ public class SlideMenuAnimatedTransition: NSObject, UIViewControllerAnimatedTran
                 return
         }
         
-        // Prelayout
-        let backgroundView = self.backgroundView
-        backgroundView.frame = containerView.bounds
-        backgroundView.alpha = 0
-        backgroundView.autoresizingMask = [.FlexibleWidth, .FlexibleHeight]
-        containerView.addSubview(backgroundView)
+        // Prelayout menu background view
+        menuBackgroundView.frame = containerView.bounds
+        menuBackgroundView.alpha = 0
+        menuBackgroundView.autoresizingMask = [.FlexibleWidth, .FlexibleHeight]
+        containerView.addSubview(menuBackgroundView)
         
+        // Prelayout menu container view
         if transitionDirection == .Left {
-            toView.frame = CGRectMake(
+            menuContainerView.frame = CGRectMake(
                 -self.revealAmount,
                 0,
                 self.revealAmount,
                 CGRectGetHeight(containerView.frame)
             )
-            toView.autoresizingMask = [.FlexibleRightMargin, .FlexibleHeight]
+            menuContainerView.autoresizingMask = [.FlexibleRightMargin, .FlexibleHeight]
         } else {
-            toView.frame = CGRectMake(
+            menuContainerView.frame = CGRectMake(
                 CGRectGetWidth(containerView.frame),
                 0,
                 self.revealAmount,
                 CGRectGetHeight(containerView.frame)
             )
-            toView.autoresizingMask = [.FlexibleLeftMargin, .FlexibleHeight]
+            menuContainerView.autoresizingMask = [.FlexibleLeftMargin, .FlexibleHeight]
         }
-        containerView.insertSubview(toView, aboveSubview: backgroundView)
         
-        let panGestureRecognizer = UIPanGestureRecognizer(target: self, action: "handlePanGesture:")
-        toView.addGestureRecognizer(panGestureRecognizer)
+        containerView.insertSubview(menuContainerView, aboveSubview: menuBackgroundView)
+        
+        // Embed toView in menuContainerView
+        toView.removeFromSuperview()
+        toView.frame = menuContainerView.bounds
+        toView.autoresizingMask = [.FlexibleWidth, .FlexibleHeight]
+        menuContainerView.addSubview(toView)
         
         // Animation
         let options: UIViewAnimationOptions
@@ -125,17 +129,17 @@ public class SlideMenuAnimatedTransition: NSObject, UIViewControllerAnimatedTran
             duration: transitionDuration(transitionContext),
             options: options,
             animations: {
-                backgroundView.alpha = 1
+                self.menuBackgroundView.alpha = 1
                 
                 if self.transitionDirection == .Left {
-                    toView.frame = CGRectMake(
+                    self.menuContainerView.frame = CGRectMake(
                         0,
                         0,
                         self.revealAmount,
                         CGRectGetHeight(containerView.frame)
                     )
                 } else {
-                    toView.frame = CGRectMake(
+                    self.menuContainerView.frame = CGRectMake(
                         CGRectGetWidth(containerView.frame) - self.revealAmount,
                         0,
                         self.revealAmount,
@@ -151,9 +155,8 @@ public class SlideMenuAnimatedTransition: NSObject, UIViewControllerAnimatedTran
     }
     
     private func animateDismissal(transitionContext: UIViewControllerContextTransitioning) {
-        guard let containerView = transitionContext.containerView(),
-            let fromView = transitionContext.viewForKey(UITransitionContextFromViewKey) else {
-                return
+        guard let containerView = transitionContext.containerView() else {
+            return
         }
         
         // Animation
@@ -169,17 +172,17 @@ public class SlideMenuAnimatedTransition: NSObject, UIViewControllerAnimatedTran
             duration: transitionDuration(transitionContext),
             options: options,
             animations: {
-                self.backgroundView.alpha = 0
+                self.menuBackgroundView.alpha = 0
                 
                 if self.transitionDirection == .Left {
-                    fromView.frame = CGRectMake(
+                    self.menuContainerView.frame = CGRectMake(
                         -self.revealAmount,
                         0,
                         self.revealAmount,
                         CGRectGetHeight(containerView.frame)
                     )
                 } else {
-                    fromView.frame = CGRectMake(
+                    self.menuContainerView.frame = CGRectMake(
                         CGRectGetWidth(containerView.frame),
                         0,
                         self.revealAmount,
