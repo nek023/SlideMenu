@@ -4,7 +4,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
     </dependencies>
     <scenes>
-        <!--Slide Menu-->
+        <!--Slide Menu Demo-->
         <scene sceneID="dX9-1G-HdO">
             <objects>
                 <viewController storyboardIdentifier="MainViewController" id="4M4-2J-QwN" customClass="MainViewController" customModule="SlideMenuDemo" customModuleProvider="target" sceneMemberID="viewController">
@@ -17,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.5450980392" green="0.76470588240000004" blue="0.2901960784" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Slide Menu" id="XF6-ZQ-nl8">
+                    <navigationItem key="navigationItem" title="Slide Menu Demo" id="XF6-ZQ-nl8">
                         <barButtonItem key="leftBarButtonItem" title="Left" id="ho5-qY-ukC">
                             <connections>
                                 <action selector="showLeftMenu:" destination="4M4-2J-QwN" id="OrM-ov-TH6"/>

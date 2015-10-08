@@ -16,12 +16,12 @@
 		AA37293B1BC114830098D18F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA3729391BC114830098D18F /* LaunchScreen.storyboard */; };
 		AA3A66721BC115A4009C6392 /* SlideMenuAnimatedTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA3A666E1BC115A4009C6392 /* SlideMenuAnimatedTransition.swift */; settings = {ASSET_TAGS = (); }; };
 		AA3A66741BC115A4009C6392 /* SlideMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA3A66701BC115A4009C6392 /* SlideMenuController.swift */; settings = {ASSET_TAGS = (); }; };
-		AA3A66751BC115A4009C6392 /* UIViewController+SlideMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA3A66711BC115A4009C6392 /* UIViewController+SlideMenu.swift */; settings = {ASSET_TAGS = (); }; };
 		AA3A667D1BC115FD009C6392 /* LeftViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA3A667A1BC115FD009C6392 /* LeftViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		AA3A667E1BC115FD009C6392 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA3A667B1BC115FD009C6392 /* MainViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		AA3A667F1BC115FD009C6392 /* RightViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA3A667C1BC115FD009C6392 /* RightViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		AA3A66811BC11623009C6392 /* SlideMenu.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA3729131BC114750098D18F /* SlideMenu.framework */; };
 		AA3A66821BC11623009C6392 /* SlideMenu.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = AA3729131BC114750098D18F /* SlideMenu.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		AAE5A5DF1BC6212B008D3DCB /* UIViewController+SlideMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE5A5DE1BC6212B008D3DCB /* UIViewController+SlideMenu.swift */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,10 +70,10 @@
 		AA37293C1BC114830098D18F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AA3A666E1BC115A4009C6392 /* SlideMenuAnimatedTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlideMenuAnimatedTransition.swift; sourceTree = "<group>"; };
 		AA3A66701BC115A4009C6392 /* SlideMenuController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlideMenuController.swift; sourceTree = "<group>"; };
-		AA3A66711BC115A4009C6392 /* UIViewController+SlideMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+SlideMenu.swift"; sourceTree = "<group>"; };
 		AA3A667A1BC115FD009C6392 /* LeftViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeftViewController.swift; sourceTree = "<group>"; };
 		AA3A667B1BC115FD009C6392 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		AA3A667C1BC115FD009C6392 /* RightViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RightViewController.swift; sourceTree = "<group>"; };
+		AAE5A5DE1BC6212B008D3DCB /* UIViewController+SlideMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+SlideMenu.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,7 +107,6 @@
 			isa = PBXGroup;
 			children = (
 				AA3729151BC114750098D18F /* SlideMenu.h */,
-				AA3A66761BC115AB009C6392 /* Extensions */,
 				AA3A66791BC115C3009C6392 /* Common */,
 				AA3A66771BC115B4009C6392 /* ViewControllers */,
 				AA3A666B1BC1156F009C6392 /* Supporting Files */,
@@ -127,6 +126,7 @@
 		AA37292F1BC114830098D18F /* SlideMenuDemo */ = {
 			isa = PBXGroup;
 			children = (
+				AAE5A5E01BC62138008D3DCB /* Extensions */,
 				AA3A66801BC11600009C6392 /* ViewControllers */,
 				AA3729301BC114830098D18F /* AppDelegate.swift */,
 				AA3A666C1BC11578009C6392 /* Resources */,
@@ -159,14 +159,6 @@
 				AA37293C1BC114830098D18F /* Info.plist */,
 			);
 			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		AA3A66761BC115AB009C6392 /* Extensions */ = {
-			isa = PBXGroup;
-			children = (
-				AA3A66711BC115A4009C6392 /* UIViewController+SlideMenu.swift */,
-			);
-			name = Extensions;
 			sourceTree = "<group>";
 		};
 		AA3A66771BC115B4009C6392 /* ViewControllers */ = {
@@ -213,6 +205,14 @@
 				AA37292E1BC114830098D18F /* SlideMenuDemo.app */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		AAE5A5E01BC62138008D3DCB /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				AAE5A5DE1BC6212B008D3DCB /* UIViewController+SlideMenu.swift */,
+			);
+			name = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -359,7 +359,6 @@
 			files = (
 				AA3A66721BC115A4009C6392 /* SlideMenuAnimatedTransition.swift in Sources */,
 				AA3A66741BC115A4009C6392 /* SlideMenuController.swift in Sources */,
-				AA3A66751BC115A4009C6392 /* UIViewController+SlideMenu.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -378,6 +377,7 @@
 				AA3A667E1BC115FD009C6392 /* MainViewController.swift in Sources */,
 				AA3A667F1BC115FD009C6392 /* RightViewController.swift in Sources */,
 				AA3729311BC114830098D18F /* AppDelegate.swift in Sources */,
+				AAE5A5DF1BC6212B008D3DCB /* UIViewController+SlideMenu.swift in Sources */,
 				AA3A667D1BC115FD009C6392 /* LeftViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
