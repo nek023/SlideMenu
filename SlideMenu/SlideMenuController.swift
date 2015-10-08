@@ -192,7 +192,7 @@ public class SlideMenuController: UIViewController, UIViewControllerTransitionin
     // MARK: - Interactive Transition
     
     private func completionSpeedForProgress(progress: CGFloat) -> CGFloat {
-        return 1.0
+        return 1.25
     }
     
     
