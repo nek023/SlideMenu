@@ -33,8 +33,8 @@ public class SlideMenuAnimatedTransition: NSObject, UIViewControllerAnimatedTran
     
     public internal(set) var presenting: Bool = true
     
-    public var animationDuration: NSTimeInterval = 0.35
     public var revealAmount: CGFloat = 300
+    public var animationDuration: NSTimeInterval = 0.35
     
     
     // MARK: - Initializers
@@ -117,41 +117,50 @@ public class SlideMenuAnimatedTransition: NSObject, UIViewControllerAnimatedTran
         menuContainerView.addSubview(toView)
         
         // Animation
-        let options: UIViewAnimationOptions
-        if transitionContext.isInteractive() {
-            options = [.CurveLinear]
-        } else {
-            options = [.CurveEaseInOut]
+        let animations = {
+            self.menuBackgroundView.alpha = 1
+            
+            if self.transitionDirection == .Left {
+                self.menuContainerView.frame = CGRectMake(
+                    0,
+                    0,
+                    self.revealAmount,
+                    CGRectGetHeight(containerView.frame)
+                )
+            } else {
+                self.menuContainerView.frame = CGRectMake(
+                    CGRectGetWidth(containerView.frame) - self.revealAmount,
+                    0,
+                    self.revealAmount,
+                    CGRectGetHeight(containerView.frame)
+                )
+            }
         }
         
-        UIView.transitionWithView(
-            containerView,
-            duration: transitionDuration(transitionContext),
-            options: options,
-            animations: {
-                self.menuBackgroundView.alpha = 1
-                
-                if self.transitionDirection == .Left {
-                    self.menuContainerView.frame = CGRectMake(
-                        0,
-                        0,
-                        self.revealAmount,
-                        CGRectGetHeight(containerView.frame)
-                    )
-                } else {
-                    self.menuContainerView.frame = CGRectMake(
-                        CGRectGetWidth(containerView.frame) - self.revealAmount,
-                        0,
-                        self.revealAmount,
-                        CGRectGetHeight(containerView.frame)
-                    )
-                }
-            },
-            completion: { (finished: Bool) in
-                let cancelled = transitionContext.transitionWasCancelled()
-                transitionContext.completeTransition(!cancelled)
-            }
-        )
+        let completion = { (finished: Bool) in
+            let cancelled = transitionContext.transitionWasCancelled()
+            transitionContext.completeTransition(!cancelled)
+        }
+        
+        if transitionContext.isInteractive() {
+            UIView.animateWithDuration(
+                animationDuration,
+                delay: 0,
+                options: [.CurveLinear],
+                animations: animations,
+                completion: completion
+            )
+        } else {
+            UIView.animateWithDuration(
+                animationDuration,
+                delay: 0,
+                usingSpringWithDamping: 1,
+                initialSpringVelocity: 0,
+                options: [],
+                animations: animations,
+                completion: completion
+            )
+        }
     }
     
     private func animateDismissal(transitionContext: UIViewControllerContextTransitioning) {
@@ -160,41 +169,50 @@ public class SlideMenuAnimatedTransition: NSObject, UIViewControllerAnimatedTran
         }
         
         // Animation
-        let options: UIViewAnimationOptions
-        if transitionContext.isInteractive() {
-            options = [.CurveLinear]
-        } else {
-            options = [.CurveEaseInOut]
+        let animations = {
+            self.menuBackgroundView.alpha = 0
+            
+            if self.transitionDirection == .Left {
+                self.menuContainerView.frame = CGRectMake(
+                    -self.revealAmount,
+                    0,
+                    self.revealAmount,
+                    CGRectGetHeight(containerView.frame)
+                )
+            } else {
+                self.menuContainerView.frame = CGRectMake(
+                    CGRectGetWidth(containerView.frame),
+                    0,
+                    self.revealAmount,
+                    CGRectGetHeight(containerView.frame)
+                )
+            }
         }
         
-        UIView.transitionWithView(
-            containerView,
-            duration: transitionDuration(transitionContext),
-            options: options,
-            animations: {
-                self.menuBackgroundView.alpha = 0
-                
-                if self.transitionDirection == .Left {
-                    self.menuContainerView.frame = CGRectMake(
-                        -self.revealAmount,
-                        0,
-                        self.revealAmount,
-                        CGRectGetHeight(containerView.frame)
-                    )
-                } else {
-                    self.menuContainerView.frame = CGRectMake(
-                        CGRectGetWidth(containerView.frame),
-                        0,
-                        self.revealAmount,
-                        CGRectGetHeight(containerView.frame)
-                    )
-                }
-            },
-            completion: { (finished: Bool) in
-                let cancelled = transitionContext.transitionWasCancelled()
-                transitionContext.completeTransition(!cancelled)
-            }
-        )
+        let completion = { (finished: Bool) in
+            let cancelled = transitionContext.transitionWasCancelled()
+            transitionContext.completeTransition(!cancelled)
+        }
+        
+        if transitionContext.isInteractive() {
+            UIView.animateWithDuration(
+                animationDuration,
+                delay: 0,
+                options: [.CurveLinear],
+                animations: animations,
+                completion: completion
+            )
+        } else {
+            UIView.animateWithDuration(
+                animationDuration,
+                delay: 0,
+                usingSpringWithDamping: 1,
+                initialSpringVelocity: 0,
+                options: [],
+                animations: animations,
+                completion: completion
+            )
+        }
     }
     
 }
