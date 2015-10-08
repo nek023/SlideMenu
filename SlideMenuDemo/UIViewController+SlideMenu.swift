@@ -1,12 +1,13 @@
 //
 //  UIViewController+SlideMenu.swift
-//  SlideMenu
+//  SlideMenuDemo
 //
 //  Created by Katsuma Tanaka on 2015/10/05.
 //  Copyright © 2015 Katsuma Tanaka. All rights reserved.
 //
 
 import UIKit
+import SlideMenu
 
 public extension UIViewController {
     
