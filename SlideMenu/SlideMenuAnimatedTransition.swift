@@ -34,7 +34,7 @@ public class SlideMenuAnimatedTransition: NSObject, UIViewControllerAnimatedTran
     public internal(set) var presenting: Bool = true
     
     public var revealAmount: CGFloat = 300
-    public var animationDuration: NSTimeInterval = 0.35
+    public var animationDuration: NSTimeInterval = 0.4
     
     
     // MARK: - Initializers
