@@ -10,6 +10,11 @@ View controller container which provides the sliding menus.
 - iOS 8.0 or later
 
 
+## Installation
+
+Use [Carthage](https://github.com/Carthage/Carthage)
+
+
 ## Usage
 
     let slideMenuController = SlideMenuController(

@@ -118,7 +118,7 @@
 			isa = PBXGroup;
 			children = (
 				AA3729211BC114750098D18F /* SlideMenuTests.swift */,
-				AA3729231BC114750098D18F /* Info.plist */,
+				AAA4E7EC1BCD6ADA005906F3 /* Supporting Files */,
 			);
 			path = SlideMenuTests;
 			sourceTree = "<group>";
@@ -205,6 +205,14 @@
 				AA37292E1BC114830098D18F /* SlideMenuDemo.app */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		AAA4E7EC1BCD6ADA005906F3 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				AA3729231BC114750098D18F /* Info.plist */,
+			);
+			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 		AAE5A5E01BC62138008D3DCB /* Extensions */ = {
@@ -421,6 +429,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				APPLICATION_EXTENSION_API_ONLY = YES;
+				BITCODE_GENERATION_MODE = marker;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
@@ -444,6 +453,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				APPLICATION_EXTENSION_API_ONLY = YES;
+				BITCODE_GENERATION_MODE = bitcode;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
